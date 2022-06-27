@@ -41,14 +41,12 @@ function SideNav({onSetCity}) {
                 )
               }
             </select>
-            {/* <input type="text" placeholder="Search Travelin" onChange={onSetCity} /> */}
         </div>
 
         <ul className="list-unstyled px-4 d-grid gap-3">
             <hr className="mx-1" />
             <li className=""><Link to="/" className="text-decoration-none d-block"><i className="fa-solid fa-house"></i>&ensp; Home</Link></li>
-            <li className=""><Link to="travel" className="text-decoration-none d-block"><i className="fa-solid fa-compass"></i>&ensp; Travel</Link></li>
-            <li className=""><Link to="food" className="text-decoration-none d-block"><i className="fa-solid fa-utensils"></i>&ensp; Food</Link></li>
+            <li className=""><Link to="travel" className="text-decoration-none d-block"><i className="fa-solid fa-compass"></i>&ensp; Food & Travel</Link></li>
             <hr className="mx-1"/>
             <li className=""><Link to="planning" className="text-decoration-none d-block"><i className="fa-solid fa-heart"></i>&ensp; Planning</Link></li>
         </ul>
