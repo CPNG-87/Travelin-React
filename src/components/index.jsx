@@ -27,11 +27,11 @@ function Home() {
 
             <div className="container">
                 <h4>Vacations</h4>
-                <div className="row flex-wrap">
+                <div className="row flex-wrap allcard">
                     {dataDestinations.filter(destination => destination.is_food === false).map((item, i) => {
                         return <div key={i} className="col-sm-6 col-lg-3">
                             <div className="card shadow mt-3">
-                                <img src={item.image} className="card-img-top" alt="..." />
+                                <img src={item.image} className="card-img-top myimages" alt="..." />
                                 <div className="card-body">
                                     <h5 className="card-title card-name">{item.title}</h5>
                                     <p className="card-text">City : <span className="text-primary">{item.cities.city}</span></p>
@@ -45,14 +45,14 @@ function Home() {
                 </div>
             </div>
 
-            <hr className="mt-5 mb-4 mx-4" />
+            <hr className=" mb-4 mx-4" />
             <div className="container">
                 <h4>Restaurants</h4>
-                <div className="row flex-wrap">
+                <div className="row flex-wrap allcard">
                     {dataDestinations.filter(destination => destination.is_food === true).map((item, i) => {
                         return <div key={i} className="col-sm-6 col-lg-3">
                             <div className="card shadow mt-3">
-                                <img src={item.image} className="card-img-top" alt="..." />
+                                <img src={item.image} className="card-img-top myimages" alt="..." />
                                 <div className="card-body">
                                     <h5 className="card-title card-name">{item.title}</h5>
                                     <p className="card-text">City : <span className="text-primary">{item.cities.city}</span></p>

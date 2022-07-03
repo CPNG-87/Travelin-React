@@ -82,6 +82,14 @@ li > a > span {
 .card {
   border: 0 solid #ffffff !important;
 }
+.allcard .myimages{
+  width: 264px;
+  height: 180px;
+  object-fit: cover;
+}
+.allcard{
+  min-height: 50vh;
+}
 .radius {
   border-radius: 10px;
   object-fit: cover;
