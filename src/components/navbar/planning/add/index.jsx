@@ -1,8 +1,13 @@
+import { useLocation } from 'react-router-dom';
+
 function AddPlanning() {
+    const location = useLocation()
+    const { title } = location.state
+
     return (
         <div className="card ms-4 mt-3 me-4 p-4 shadow">
             <div className="card-title text-center">
-            <h2 className="mt-4">Add To Planning</h2>
+                <h2 className="mt-4">Add To Planning</h2>
             </div>
             <div className="container mb-5">
                 <div className="row col-md-auto justify-content-center">
@@ -19,26 +24,26 @@ function AddPlanning() {
                             </div>
                             <div className="row mb-3">
                                 <div className="col">
-                                <label>Tanggal Mulai</label>
-                                <input type="date" className="form-control"required autofocus />
+                                    <label>Tanggal Mulai</label>
+                                    <input type="date" className="form-control" required autofocus />
                                 </div>
                                 <div className="col">
-                                <label>Tanggal Selesai</label>
-                                <input type="date" className="form-control"required autofocus />
+                                    <label>Tanggal Selesai</label>
+                                    <input type="date" className="form-control" required autofocus />
                                 </div>
                             </div>
                             <div className="mb-3">
                                 <label>Destination</label>
-                                <input type="text" className="form-control" required autofocus value="Monas"/>
+                                <input type="text" className="form-control" required disabled value={title} />
                             </div>
                             <div className="row mb-3">
                                 <div className="col">
-                                <label>Waktu Mulai</label>
-                                <input type="time" className="form-control"required autofocus />
+                                    <label>Waktu Mulai</label>
+                                    <input type="time" className="form-control" required autofocus />
                                 </div>
                                 <div className="col">
-                                <label>Waktu Selesai</label>
-                                <input type="time" className="form-control"required autofocus />
+                                    <label>Waktu Selesai</label>
+                                    <input type="time" className="form-control" required autofocus />
                                 </div>
                             </div>
                         </form>
@@ -53,6 +58,5 @@ function AddPlanning() {
         </div>
     );
 }
-  
+
 export default AddPlanning;
-  

@@ -1,8 +1,11 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import DetailBar from "./../components/navbar/detail/index"
 
 function Home() {
     const [dataDestinations, setDataDestinations] = useState([]);
+    let [openModal, setOpenModel] = useState(false);
+    let [destinations, setDestinations] = useState({});
 
     const getDestinations = () => {
         axios.get("http://localhost:5000/destination")
@@ -20,6 +23,7 @@ function Home() {
             <div className="card-title text-center">
                 <h2 className="mt-3">HOME</h2>
             </div>
+            {openModal && <DetailBar closeModal={setOpenModel} destination={destinations} />}
 
             <div className="container">
                 <h4>Vacations</h4>
@@ -33,7 +37,7 @@ function Home() {
                                     <p className="card-text">City : <span className="text-primary">{item.cities.city}</span></p>
                                 </div>
                                 <div className="card-body mt-auto ms-auto">
-                                    <a href="#/detail" className="btn btn-primary btn-sm" >Detail</a>
+                                    <button className="btn btn-primary btn-sm" onClick={() => { setOpenModel(true); setDestinations(`${item.id}`); }}>Detail</button>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +50,7 @@ function Home() {
                 <h4>Restaurants</h4>
                 <div className="row flex-wrap">
                     {dataDestinations.filter(destination => destination.is_food === true).map((item, i) => {
-                        return <div className="col-sm-6 col-lg-3">
+                        return <div key={i} className="col-sm-6 col-lg-3">
                             <div className="card shadow mt-3">
                                 <img src={item.image} className="card-img-top" alt="..." />
                                 <div className="card-body">
@@ -54,7 +58,7 @@ function Home() {
                                     <p className="card-text">City : <span className="text-primary">{item.cities.city}</span></p>
                                 </div>
                                 <div className="card-body mt-auto ms-auto">
-                                    <a href="#/detail" className="btn btn-primary btn-sm">Detail</a>
+                                    <button className="btn btn-primary btn-sm" onClick={() => { setOpenModel(true); setDestinations(`${item.id}`); }}>Detail</button>
                                 </div>
                             </div>
                         </div>

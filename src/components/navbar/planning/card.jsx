@@ -1,51 +1,39 @@
-import {Link} from "react-router-dom";
+function Card({ planning }) {
 
+    function deletePlanningHandler(e) {
+        let dataPlanning = JSON.parse(localStorage.getItem("planning"));
+        dataPlanning.splice(e.currentTarget.id, 1);
 
-function Card() {
+        localStorage.setItem("planning", JSON.stringify(dataPlanning));
+
+        alert("delete planning success");
+    }
 
     return (
-        <div className="col-sm-6 col-lg-4 mb-3">
-            <div className="card shadow">
-                <div className="card-body">
-                    <h5 className="card-title">Liburan Ke Jakarta</h5>
-                    <h6>Waktu : </h6>
-                    <p>18/05/2022 - 20/05/2022</p>
-                    <h6>Agenda : </h6>
-                    <del>
-                    <div className="form-check d-flex justify-content-between">
-                        <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked />
-                        <label className="form-check-label" for="flexCheckChecked">
-                        Monas 
-                        </label>
-                        <p className="time">06.00 - 10.00</p>
+        planning.map((item, i) => {
+            return <div key={i} className="col-sm-6 col-lg-4 mb-3">
+                <div className="card shadow">
+                    <div className="card-body">
+                        <h5 className="card-title">{item.nameTrip}</h5>
+                        <h6>Time : </h6>
+                        <p>{item.startDate} / {item.dateCompletion}</p>
+                        <h6>Destination : </h6>
+                        <div className="d-flex justify-content-between">
+                            <label>
+                                {item.destination}
+                            </label>
+                            <p className="time">{item.startTime} - {item.timeUp}</p>
+                        </div>
+                        <h6>Budget : </h6>
+                        <h5 className="harga">Rp. {item.cost}</h5>
                     </div>
-                    </del>
-                    <div className="form-check d-flex justify-content-between">
-                        <input className="form-check-input" type="checkbox" value="" id="flexCheckdefault"/>
-                        <label className="form-check-label" for="flexCheckdefault">
-                        TMII
-                        </label>
-                        <p className="time">11.00 - 14.00</p> 
+                    <div className="card-body mt-auto ms-auto d-flex gap-2">
+                        <button id={i} className="btn btn-danger" onClick={deletePlanningHandler}>Delete</button>
                     </div>
-                    <div className="form-check d-flex justify-content-between mb-3">
-                        <input className="form-check-input" type="checkbox" value="" id="flexCheckdefault1"/>
-                        <label className="form-check-label text-start" for="flexCheckdefault1">
-                        Grand Indonesia
-                        </label>
-                        <p className="time">15.00 - 19.00</p> 
-                    </div>
-                    <h6>Budget : </h6>
-                    <h5 className="harga">Rp. 500.000</h5>
-                </div>
-                <div className="card-body mt-auto ms-auto">
-                    {/* <a href="#/update-planning" className="btn btn-primary btn-sm">Update</a> */}
-                    <Link to="update" className="btn btn-primary btn-sm">Update</Link>
-                    <a href="#ok" className="btn btn-danger btn-sm">Delete</a>
                 </div>
             </div>
-        </div>            
+        })
     );
-  }
-  
-  export default Card;
-  
+}
+
+export default Card;
